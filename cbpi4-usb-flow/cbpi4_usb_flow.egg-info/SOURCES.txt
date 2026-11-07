@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+cbpi4_usb_flow/__init__.py
+cbpi4_usb_flow/config.yaml
+cbpi4_usb_flow/protocol.py
+cbpi4_usb_flow/reader.py
+cbpi4_usb_flow/sensor.py
+cbpi4_usb_flow.egg-info/PKG-INFO
+cbpi4_usb_flow.egg-info/SOURCES.txt
+cbpi4_usb_flow.egg-info/dependency_links.txt
+cbpi4_usb_flow.egg-info/requires.txt
+cbpi4_usb_flow.egg-info/top_level.txt
