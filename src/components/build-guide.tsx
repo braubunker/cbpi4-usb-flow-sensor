@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pulsesPerLiterFromSample, SENSOR_PRESETS } from "@/lib/flow";
+import { PartsList } from "@/components/parts-list";
 import { WiringDiagram } from "@/components/wiring-diagram";
 
 type BuildGuideProps = {
@@ -32,30 +33,29 @@ export function BuildGuide({ onApplyPpl }: BuildGuideProps) {
         <TabsTrigger value="cbpi">CraftBeerPi</TabsTrigger>
       </TabsList>
 
-      <TabsContent value="aufbau" className="mt-4">
-        <div className="grid gap-4 lg:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Teile</CardTitle>
-              <CardDescription>Der Pi sieht nur USB. Die Impulse zählt der Arduino.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-3 text-sm leading-6">
-              <p>Hall-Durchflusssensor mit Impulsausgang, zum Beispiel YF-S201 mit 1/2-Zoll-Gewinde. Der Kunststoffsensor ist für kaltes Wasser gedacht. Für heisses Brauwasser einen Edelstahlsensor mit demselben Signal verwenden.</p>
-              <p>Arduino Nano, 5 V. Klone mit CH340-Chip sind üblich und erscheinen am Pi als <code>/dev/ttyUSB0</code>.</p>
-              <p>USB-Kabel, das Daten überträgt, plus drei Leitungen zum Sensor.</p>
-              <p>Optional ein Magnetventil als normaler GPIO-Aktor in CBPi. Das Ventil hängt nicht am Arduino. Der Sudschritt schaltet den Aktor aus, sobald die Liter erreicht sind.</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Anschluss</CardTitle>
-              <CardDescription>Gelb bleibt am Arduino. An den Pi geht nur das USB-Kabel.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <WiringDiagram />
-            </CardContent>
-          </Card>
-        </div>
+      <TabsContent value="aufbau" className="mt-4 flex flex-col gap-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Verdrahtungsplan</CardTitle>
+            <CardDescription>
+              Gelb bleibt am Arduino. An den Pi geht nur das USB-Kabel.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <WiringDiagram />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Bauteile</CardTitle>
+            <CardDescription>
+              Der Pi sieht nur USB. Die Impulse zählt der Arduino. Ein Magnetventil bleibt ein eigener GPIO-Aktor.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <PartsList />
+          </CardContent>
+        </Card>
       </TabsContent>
 
       <TabsContent value="kalibrieren" className="mt-4">

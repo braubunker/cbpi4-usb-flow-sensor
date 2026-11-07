@@ -2,6 +2,8 @@
 
 Sensor-Plugin, das die Liter von einem Arduino am USB-Anschluss anzeigt.
 
+Der Hall-Sensor hängt am Nano: rot an 5V, schwarz an GND, gelb an D2. An den Pi geht nur das USB-Kabel. Bauteile und der Verdrahtungsplan stehen in der Werkbank und in der README im Repo-Wurzelverzeichnis.
+
 ## Installieren
 
 Auf dem Raspberry Pi, im Ordner mit diesem Plugin:

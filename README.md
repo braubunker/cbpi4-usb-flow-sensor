@@ -15,19 +15,23 @@ Die Seite läuft danach auf Port 4731. Hahn öffnen füllt den Tank. Die grosse 
 
 ## Hardware
 
-| Teil | Hinweis |
-| --- | --- |
-| Hall-Durchflusssensor, 1/2 Zoll | YF-S201 für kaltes Wasser, Startwert 450 Impulse/L. Für heisses Wasser einen Edelstahlsensor mit Impulsausgang. |
-| Arduino Nano, 5 V | CH340-Klone erscheinen als `/dev/ttyUSB0`. |
-| USB-Kabel | Muss Daten übertragen, nicht nur laden. |
+| Teil | Hinweis | Bezugsquelle |
+| --- | --- | --- |
+| YF-S201, G1/2 | Kaltes Wasser, Startwert 450 Impulse/L | [Funduino](https://funduino.com/products/yf-s201-wasser-durchflusssensor-1-30l-min-g1-2-halleffekt), [Otronic](https://www.otronic-shop.de/de/water-flow-sensor-yf-s201) |
+| Arduino Nano, 5 V, ATmega328P | CH340-Klone erscheinen als `/dev/ttyUSB0` | [Galaxus, Berrybase-Nano](https://www.galaxus.ch/de/s1/product/berrybase-compatible-arduino-nano-with-atmel-mega-328p-process-single-board-computer-kits-33668257) |
+| USB-A auf Mini-USB | Datenkabel, kein reines Ladekabel | [Galaxus, Delock](https://www.galaxus.ch/de/s1/product/delock-usb-a-usb-mini-b-070-m-usb-20-usb-cables-5639018) |
+| Jumper Buchse-Buchse | Nur wenn das Sensorkabel keine Buchsen hat | [Galaxus, Purecrea](https://www.galaxus.ch/de/s1/product/purecrea-jumperkabel-cable-prise-electronique-34239672) |
+| YF-B1 Edelstahl, optional | Heisses Brauwasser, Impulszahl kalibrieren | [SmartHomeShop](https://smarthomeshop.io/en/products/water-flow-sensor-yf-b1-g1-2-dn15) |
+| Zwei Schlauchtüllen G1/2 | Pfeil auf dem Sensor in Fliessrichtung | [Galaxus-Suche](https://www.galaxus.ch/de/search?q=Schlaucht%C3%BClle%201%2F2) |
 
-Verdrahtung am Nano:
+Verdrahtung, Nano mit Mini-USB nach oben:
 
-- Rot → 5V
-- Schwarz → GND
-- Gelb → D2
+- Rot (Sensor VCC) → Stift mit Aufdruck **5V** (linke Reihe, 12. Stift vom USB)
+- Schwarz (Sensor GND) → Stift mit Aufdruck **GND** (rechte Reihe, gegenüber von 5V)
+- Gelb (Sensor Signal) → Stift mit Aufdruck **D2** (rechte Reihe, ein Stift näher am USB als dieses GND)
+- Mini-USB am Nano → USB-Buchse am Raspberry Pi
 
-Das gelbe Signal bleibt am Arduino. An den Raspberry Pi geht nur das USB-Kabel.
+Das gelbe Signal bleibt am Arduino. An den Raspberry Pi geht nur das USB-Kabel. Ein Magnetventil ist ein eigener GPIO-Aktor und hängt nicht an diesen drei Drähten.
 
 Sketch `firmware/usb_flowmeter/usb_flowmeter.ino` mit der Arduino IDE laden. Board: Arduino Nano. Wenn der Upload bei einem Klon scheitert, den Prozessor „ATmega328P (Old Bootloader)“ wählen.
 
