@@ -52,7 +52,6 @@ def _pulses_per_liter(props) -> int:
         Property.Select(
             label="Anzeige",
             options=[VOLUME, FLOW],
-            default_value=VOLUME,
             description="Was die grosse Zahl des Sensors zeigt. Der Füllschritt rechnet immer in Litern.",
         ),
     ]
@@ -162,13 +161,11 @@ class UsbFlowSensor(CBPiSensor):
         Property.Select(
             label="Am Start zurücksetzen",
             options=["Ja", "Nein"],
-            default_value="Ja",
             description="Setzt den Zähler auf null, wenn der Schritt beginnt.",
         ),
         Property.Select(
             label="Am Ende zurücksetzen",
-            options=["Ja", "Nein"],
-            default_value="Nein",
+            options=["Nein", "Ja"],
             description="Setzt den Zähler auf null, wenn die Zielmenge erreicht ist.",
         ),
     ]
