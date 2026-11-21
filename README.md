@@ -58,14 +58,11 @@ Den genauen Port zeigt `ls -l /dev/serial/by-id`.
 
 ## CraftBeerPi 4
 
-Auf dem Pi, einmalig das Repo holen und aus diesem Ordner installieren. `./cbpi4-usb-flow` gilt nur dort, nicht im Home-Verzeichnis.
+Auf dem Pi holt dieser Befehl das Plugin direkt von GitHub und installiert es in CraftBeerPi. Ein eigenes Klonen ist nicht nötig. Derselbe Befehl holt später auch eine neuere Fassung.
 
 ```bash
-cd "$HOME"
-git clone https://github.com/braubunker/cbpi4-usb-flow-sensor.git
-cd "$HOME/cbpi4-usb-flow-sensor"
 sudo usermod -aG dialout "$USER"
-pipx runpip cbpi4 install ./cbpi4-usb-flow
+pipx runpip cbpi4 install --upgrade "git+https://github.com/braubunker/cbpi4-usb-flow-sensor.git#subdirectory=cbpi4-usb-flow"
 sudo systemctl restart craftbeerpi
 ```
 

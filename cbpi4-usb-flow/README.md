@@ -6,12 +6,14 @@ Der Hall-Sensor hängt am Nano: rot an 5V, schwarz an GND, gelb an D2. An den Pi
 
 ## Installieren
 
-Auf dem Raspberry Pi, im Ordner mit diesem Plugin (`setup.py` muss hier liegen):
+Auf dem Raspberry Pi, von überall. Der Befehl lädt das Plugin von GitHub:
 
 ```bash
-pipx runpip cbpi4 install .
+pipx runpip cbpi4 install --upgrade "git+https://github.com/braubunker/cbpi4-usb-flow-sensor.git#subdirectory=cbpi4-usb-flow"
 sudo systemctl restart craftbeerpi
 ```
+
+Zum Entwickeln im ausgecheckten Ordner geht auch `pipx runpip cbpi4 install .`.
 
 Fehlt `craftbeerpi.service`, legt `cbpi autostart on` ihn an. Läuft CBPi nur in einem Terminal, dort mit Strg+C beenden und mit `cbpi` neu starten.
 
