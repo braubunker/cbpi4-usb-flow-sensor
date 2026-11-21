@@ -6,12 +6,14 @@ Der Hall-Sensor hängt am Nano: rot an 5V, schwarz an GND, gelb an D2. An den Pi
 
 ## Installieren
 
-Auf dem Raspberry Pi, im Ordner mit diesem Plugin:
+Auf dem Raspberry Pi, im Ordner mit diesem Plugin (`setup.py` muss hier liegen):
 
 ```bash
 pipx runpip cbpi4 install .
-sudo systemctl restart cbpi
+sudo systemctl restart craftbeerpi
 ```
+
+Fehlt `craftbeerpi.service`, legt `cbpi autostart on` ihn an. Läuft CBPi nur in einem Terminal, dort mit Strg+C beenden und mit `cbpi` neu starten.
 
 Der Benutzer von CBPi braucht Zugriff auf die serielle Schnittstelle:
 

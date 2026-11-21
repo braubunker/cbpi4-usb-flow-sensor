@@ -58,15 +58,18 @@ Den genauen Port zeigt `ls -l /dev/serial/by-id`.
 
 ## CraftBeerPi 4
 
-Auf dem Pi:
+Auf dem Pi, einmalig das Repo holen und aus diesem Ordner installieren. `./cbpi4-usb-flow` gilt nur dort, nicht im Home-Verzeichnis.
 
 ```bash
+cd "$HOME"
+git clone https://github.com/braubunker/cbpi4-usb-flow-sensor.git
+cd "$HOME/cbpi4-usb-flow-sensor"
 sudo usermod -aG dialout "$USER"
 pipx runpip cbpi4 install ./cbpi4-usb-flow
-sudo systemctl restart cbpi
+sudo systemctl restart craftbeerpi
 ```
 
-Neu anmelden, damit die Gruppe `dialout` gilt. Danach in CBPi:
+Neu anmelden, damit die Gruppe `dialout` gilt. Der Dienst heisst `craftbeerpi`, nicht `cbpi`. Fehlt er, legt `cbpi autostart on` ihn an. Läuft CBPi nur in einem Terminal, dort mit Strg+C beenden und mit `cbpi` neu starten. Danach in CBPi:
 
 1. Hardware → Sensor hinzufügen → Typ **USB Durchflussmesser**.
 2. Anschluss auf den `by-id`-Pfad setzen, Impulse pro Liter eintragen, Anzeige **Volumen (L)**.
